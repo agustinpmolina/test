@@ -1,0 +1,75 @@
+/* Estilos para errores y éxitos */
+.error-input {
+  background-color: #F2657F;
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.warning-input {
+  background-color: #F9E79F;
+  color: black;
+  padding: 8px;
+  border-radius: 4px;
+}
+.success-input {
+  background-color: white;;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+/* Estilos para el calendario */
+.calendario {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.dia {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+}
+
+.dia.anterior {
+  color: red;
+}
+
+/* Estilos generales para formularios */
+.submit-form {
+  font-family: Arial, sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #F8F9F9;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.submit-form h4 {
+  color: #5D6D7E;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+/* Estilos para los labels en formularios */
+.submit-form label {
+  font-weight: bold;
+  color: #34495E;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Estilos para elementos de lista en formularios */
+.submit-form ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Estilos para los elementos de radio en formularios */
+.submit-form input[type="radio"] {
+  margin-right: 5px;
+  cursor: pointer;
+}

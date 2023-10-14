@@ -1,0 +1,116 @@
+   <div *ngIf="!submitted">
+      <div class="submit-form">
+      <div class="form-group">
+ <style>
+</style>
+  <style>
+        h2 {
+            color: #145A32;
+            font-family: Trebuchet MS;
+            text-align: center;
+        }
+    </style>
+<h2 > <img src="https://cdn-icons-png.flaticon.com/512/1160/1160515.png" alt="Logo" class="logo" style="width: 30px; height: 30px;"> UTN FRD - Gestión de Cursos [Crear Curso]</h2>
+<label for="title">Nombre</label>
+<input
+  type="text"
+  class="form-control"
+  id="title"
+  required
+  [(ngModel)]="curso.nombre"
+  name="title"
+  placeholder="Escriba el nombre del curso" 
+  required/>
+</div>
+ <style>
+        p {font-size: 15px;}
+    </style>
+  <div *ngIf="curso.nombre === ''" class="error-message">
+  <p> (*)  El nombre del curso es requerido. </p>
+</div>
+
+
+
+      <div class="form-group">
+      <label for="docente">Docente</label>
+      <select 
+      class="form-control"
+      [class.warning-input]="obligatoriosError" 
+      [class.success-input]="!obligatoriosError" 
+      id="docente" 
+      required 
+      [(ngModel)]="curso.idDocente" 
+     >
+      <option value="0" disabled>Seleccione un docente</option>
+      <option value="1">Sergio Viera</option>
+      <option value="2">Santiago Ragazzo</option>
+      <option value="3">Marcelo Bandino</option>
+      </select>
+      </div>
+  <div *ngIf="curso.idDocente === 0 " class="error-message">
+  <p> (*)  El docente del curso es requerido. </p>
+</div>
+
+      <div class="form-group">
+      <label for="tema">Tema</label>
+      <select 
+      class="form-control"  
+      [class.warning-input]="obligatoriosError" 
+      [class.success-input]="!obligatoriosError" 
+      [(ngModel)]="selectedTemaId"
+       (ngModelChange)="retrieveMaterialesPorCurso()">
+      <option value="0" disabled>Selecciona un tema</option>
+      <option *ngFor="let tema of temas" [value]="tema.id" >{{ tema.nombre }}</option>
+      </select>
+      </div>
+      <div *ngIf="selectedTemaId === 0" class="error-message">
+      <p> (*)  El tema del curso es requerido. </p>
+     </div>
+            
+	 <div class="form-group">
+     <label for="material">Materiales</label>
+     <ul>
+     <li *ngFor="let materialT of materialesTema">
+     <input type="radio" [value]="materialT.id" [(ngModel)]="selectedMaterialId" disabled>
+     {{ materialT.titulo }}
+     </li>
+     </ul>
+
+ <div class="form-group">
+  <label for="fechaInicio">Fecha inicio</label>
+  <input
+    class="form-control"
+    id="fechaInicio"
+    required
+    [(ngModel)]="curso.fechaInicio"
+    name="fechaInicio"
+    type="date"
+    [min]="currentDate"
+    placeholder="dd/mm/yyyy hh:mm"
+    pattern="\d{2}/\d{2}/\d{4} \d{2}:\d{2}"
+  />
+</div>
+
+      </div>
+      </div>
+
+     <button [disabled]="curso.nombre === ''" (click)="saveCurso()" class="m-3 btn btn-sm btn-success">Guardar</button>
+     </div>
+    
+     <div *ngIf="submitted">
+          <style>
+        h6 {
+            color: #212F3C; /* Color de texto verde */
+            font-weight: bold; /* Texto en negrita */
+            font-size: 20px; /* Tamaño de fuente más grande */
+            font-family: Trebuchet MS; text-align: center;
+        }
+        
+      </style>
+     <h6>Curso creado correctamente!</h6>
+     <button class="m-3 btn btn-sm btn-success" (click)="newCurso()">Añadir</button>
+     </div>
+     
+     
+     
+ 

@@ -1,0 +1,142 @@
+
+ <div *ngIf="viewMode; else editable" >
+ <div *ngIf="currentElement.id">
+ <div [ngClass]="{'course-details': currentElement.id != 0}">
+  <style>
+        h2 { color: #145A32; font-family: Trebuchet MS; text-align: center;
+        }
+    </style>
+    <h2>  <img src="https://www.ufpb.br/cdn/contents/imagens/icones/curso.png/@@images/246c64ff-eb13-41af-8be3-cab4e1d763e8.png" alt="Logo" class="logo" style="width: 30px; height: 30px;">      UTN FRD - Cursos</h2>
+    
+    <div>
+      <label>Nombre:</label> {{ currentElement.nombre }}
+    </div>
+  
+    
+    <div>
+      <label>Docente:</label> 
+      {{ currentElement.idDocente === 1 ? 'Sergio Viera' : currentElement.idDocente === 2 ? 'Santiago Ragazzo' : currentElement.idDocente === 3 ? 'Marcelo Bandino' : 'Desconocido' }}
+    </div>
+    
+    <div>
+      <label>Tema:</label>
+      {{ currentElement.tema == null ? "-" : currentElement.tema.nombre }}
+    </div>
+
+   
+    <div *ngIf="currentElement.tema" class="course-theme-id">
+      {{ asignarTemaId(currentElement.tema.id) }}
+    </div>
+
+    <div>
+      <label>Materiales:</label>
+      <ul>
+        <li *ngFor="let materialT of materialesTema" class="material-list-item">
+          <input type="radio" [value]="materialT.id" disabled>
+          {{ materialT.titulo}}
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <label for="description" type="date">Fecha inicio:</label>
+      {{ currentElement.fechaInicio | date:'dd/MM/yyyy' }} <img src="https://static.vecteezy.com/system/resources/previews/014/586/732/original/calendar-icon-a-red-calendar-for-reminders-of-appointments-and-important-festivals-in-the-year-png.png" alt="Logo" class="logo" style="width: 30px; height: 30px;">
+    </div>
+
+    <a
+      class="m-3 btn btn-sm btn-warning"
+      routerLink="/cursos/{{ currentElement.id }}"
+    >
+      Editar
+    </a>
+  </div>
+  </div>
+  </div>
+
+
+<ng-template #editable>
+
+  <div *ngIf="currentElement.id" class="edit-form">
+    <h2 style= "font-family:Trebuchet MS" > <img src="https://cdn-icons-png.flaticon.com/512/1160/1160515.png" alt="Logo" class="logo" style="width: 30px; height: 30px;"> UTN FRD - Gestión de Cursos  [Editar Curso]        </h2>
+    <form>
+      
+     	<div class="form-group">
+        <label>ID Curso:</label>
+        {{ currentElement.id == null ? "-" : currentElement.id }}
+      </div>
+    
+      <div class="form-group">
+        <label for="title">Nombre del curso</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          [(ngModel)]="currentElement.nombre"
+          name="title"
+          
+        />
+  <div *ngIf="currentElement.nombre === ''" class="error-message">
+   <style>
+        p {font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px;}
+    </style>
+  <p> (*)  El nombre del curso es requerido. </p>
+</div>
+      </div>
+  <div class="form-group">
+  <label for="fechaInicio">Fecha inicio</label>
+  <input
+    class="form-control"
+    id="fechaInicio"
+    required
+    [(ngModel)]="currentElement.fechaInicio"
+    name="fechaInicio"
+    type="date"
+    [min]="currentDate"
+    placeholder="dd/mm/yyyy hh:mm"
+    pattern="\d{2}/\d{2}/\d{4} \d{2}:\d{2}"/>
+    </div>
+
+	  
+		    
+      <div class="form-group">
+        <label>Docente:</label>
+        {{ currentElement.idDocente === 1 ? 'Sergio Viera' : currentElement.idDocente === 2 ? 'Santiago Ragazzo' : currentElement.idDocente === 3 ? 'Marcelo Bandino' : 'Desconocido' }}
+      </div>
+
+
+      <div class="form-group">
+        <label>Tema:</label>
+        {{ currentElement.tema == null ? "-" : currentElement.tema.nombre }}
+      </div>
+
+    </form>
+    <button class="m-3 btn btn-sm btn-danger" (click)="deleteElement()">
+      Eliminar
+    </button>
+    <button
+      type="submit"
+      class="m-3 btn btn-sm btn-success"
+      (click)="updateElement()"
+        [disabled]="currentElement.nombre === ''"
+    >
+      Actualizar
+    </button>
+     <style>
+        .success-message {
+            color: 212F3C; /* Color de texto verde */
+            font-weight: bold; /* Texto en negrita */
+            font-size: 20px; /* Tamaño de fuente más grande */
+            font-family: Trebuchet MS; text-align: center;
+        }
+        
+      </style>
+    
+ <p class="success-message">{{ message }}</p>
+  </div>
+  <div *ngIf="!currentElement.id">
+    <br />
+    <p>Elemento no encontrado...</p>
+  </div>
+  
+  
+</ng-template> 

@@ -1,0 +1,94 @@
+/* Estilos generales */
+.course-details, .edit-form {
+  font-family: Arial, sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #F7F7F7 ;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.course-details h4, .edit-form h4 {
+  color: #5D6D7E;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+/* Estilos para los detalles del curso */
+.course-details label, .edit-form label {
+  font-weight: bold;
+  color: #34495E;
+}
+
+.course-details .badge {
+  background-color: #f39c12;
+  color: #fff;
+  padding: 50px 100px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+/* Estilos para la lista de materiales */
+.material-list-item {
+  list-style-type: none;
+  margin-bottom: 5px;
+  color: #212F3C;;
+  font-family: verdana;
+  font-size: 14px;
+}
+
+/* Estilos para el ID del tema */
+.course-theme-id {
+  color: #fff;
+  background-color: #145A32;
+  border-radius: 1px;
+  padding: 1px 250px;
+  font-size: 16px;
+  margin-top: 15px;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.empty-container {
+  background-color: white;
+  /* Otros estilos para el fondo blanco */
+}
+/* Estilos para errores y éxitos */
+.error-input {
+  background-color: #F2657F;
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.success-input {
+  background-color: white;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+/* Estilos para el calendario */
+.calendario {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.dia {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+}
+
+.obligatorios {
+  background-color: #F2657F;
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+}
+
